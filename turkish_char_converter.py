@@ -70,7 +70,7 @@ output_box.grid(row=3, column=0, columnspan=2, pady=5)
 convert_btn = ttk.Button(frame, text="Convert", command=on_convert)
 convert_btn.grid(row=4, column=0, pady=10)
 
-copy_btn = ttk.Button(frame, text="Copy Text", command=copy_to_clipboard)
+copy_btn = ttk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard)
 copy_btn.grid(row=4, column=1, pady=10)
 
 root.mainloop()
