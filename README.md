@@ -37,5 +37,5 @@ The converted text will appear in the "Converted Text" box.
 
 The application uses a predefined dictionary to map each Turkish character to its HTML code. When a user inputs text and clicks the "Convert" button, the application processes the text, replacing any recognized Turkish characters with their corresponding HTML codes.
 
-# 📄 [License](https://i.etsystatic.com/15378848/r/il/0fb5f6/5227105783/il_1588xN.5227105783_8g96.jpg)
+## 📄 [License](https://i.etsystatic.com/15378848/r/il/0fb5f6/5227105783/il_1588xN.5227105783_8g96.jpg)
 
