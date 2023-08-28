@@ -22,8 +22,8 @@ def convert_to_html_codes(input_text):
     
     return input_text
 
-def on_convert():
-    input_text = input_box.get(1.0, tk.END)
+def on_key_release(event=None):
+    input_text = input_box.get(1.0, tk.END).strip()
     converted_text = convert_to_html_codes(input_text)
     output_box.delete(1.0, tk.END)
     output_box.insert(tk.END, converted_text)
@@ -38,7 +38,9 @@ def copy_to_clipboard():
 def show_fading_popup(message):
     popup = tk.Toplevel(root)
     popup.wm_overrideredirect(True)
-    popup.geometry("+%d+%d" % (root.winfo_x() + 50, root.winfo_y() + 50))
+    x = root.winfo_x() + (root.winfo_width() // 2) - (popup.winfo_reqwidth() // 2)
+    y = root.winfo_y() + (root.winfo_height() // 2) - (popup.winfo_reqheight() // 2)
+    popup.geometry("+%d+%d" % (x, y))
     label = ttk.Label(popup, text=message, padding=(10, 5))
     label.pack()
     
@@ -62,15 +64,13 @@ frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 ttk.Label(frame, text="Input Text:").grid(row=0, column=0, sticky=tk.W, pady=5)
 input_box = tk.Text(frame, height=10, width=50)
 input_box.grid(row=1, column=0, columnspan=2, pady=5)
+input_box.bind("<KeyRelease>", on_key_release)
 
 ttk.Label(frame, text="Converted Text:").grid(row=2, column=0, sticky=tk.W, pady=5)
 output_box = tk.Text(frame, height=10, width=50)
 output_box.grid(row=3, column=0, columnspan=2, pady=5)
 
-convert_btn = ttk.Button(frame, text="Convert", command=on_convert)
-convert_btn.grid(row=4, column=0, pady=10)
-
 copy_btn = ttk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard)
-copy_btn.grid(row=4, column=1, pady=10)
+copy_btn.grid(row=4, column=0, columnspan=2, pady=10)
 
 root.mainloop()

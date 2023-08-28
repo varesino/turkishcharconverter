@@ -4,16 +4,14 @@ A simple and efficient Python application with a GUI to convert specific Turkish
 
 ## 🌟 Features
 
-Simple and intuitive GUI interface.
-
-Instant conversion from Turkish characters to HTML character codes.
-
-Full support for Turkish characters: Ç, ç, Ğ, ğ, İ, ı, Ö, ö, Ş, ş, Ü, ü.
-
-"Copy to Clipboard" feature to instantly copy the converted text with a single click.
+- Simple and intuitive GUI interface.
+- Real-time conversion from Turkish characters to HTML character codes.
+- Full support for Turkish characters: Ç, ç, Ğ, ğ, İ, ı, Ö, ö, Ş, ş, Ü, ü.
+- "Copy to Clipboard" feature to instantly copy the converted text with a single click.
 
 ## 📋 Prerequisites
-Python 3.x
+
+- Python 3.x
 
 ## 🚀 Getting Started
 
@@ -26,16 +24,14 @@ cd turkishcharconverter/
 ```
 python3 turkish_char_converter.py
 ```
+
 Once the GUI appears:
 
-1. Enter or paste your text containing Turkish characters into the "Input Text" box.
-
-2. Click the "Convert" button. The converted text will appear in the "Converted Text" box.
-
-3. Use the "Copy to Clipboard" button to quickly copy the converted text for use elsewhere.
+1. Enter or paste your text containing Turkish characters into the "Input Text" box. As you type, the corresponding HTML codes will automatically appear in the "Converted Text" box.
+2. Use the "Copy to Clipboard" button to quickly copy the converted text for use elsewhere.
 
 ## 🔍 How It Works
 
-The application uses a predefined dictionary to map each Turkish character to its HTML code. When a user inputs text and clicks the "Convert" button, the application processes the text, replacing any recognized Turkish characters with their corresponding HTML codes.
+The application uses a predefined dictionary to map each Turkish character to its HTML code. As the user types or pastes text into the "Input Text" box, the application processes the text in real-time, replacing any recognized Turkish characters with their corresponding HTML codes.
 
 ## 📄 [License](https://i.etsystatic.com/15378848/r/il/0fb5f6/5227105783/il_1588xN.5227105783_8g96.jpg)
