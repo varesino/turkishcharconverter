@@ -1,4 +1,4 @@
-# Turkish Character HTML Code Converter 🇹🇷
+# Turkish Character to HTML Code Converter 🇹🇷
 
 A simple and efficient Python application with a GUI to convert specific Turkish characters in a given text into their corresponding HTML character codes.
 
