@@ -28,7 +28,30 @@ def on_convert():
     output_box.delete(1.0, tk.END)
     output_box.insert(tk.END, converted_text)
 
-#GUI Setup
+def copy_to_clipboard():
+    root.clipboard_clear()
+    root.clipboard_append(output_box.get(1.0, tk.END))
+    root.update()  # This line ensures the clipboard contents are updated
+    show_fading_popup("Text copied successfully!")
+
+def show_fading_popup(message):
+    popup = tk.Toplevel(root)
+    popup.wm_overrideredirect(True)  # Removes window decorations
+    popup.geometry("+%d+%d" % (root.winfo_x() + 50, root.winfo_y() + 50))
+    label = ttk.Label(popup, text=message, padding=(10, 5))
+    label.pack()
+    
+    def fade_away():
+        alpha = popup.attributes("-alpha")
+        if alpha > 0:
+            popup.attributes("-alpha", alpha - 0.1)
+            root.after(100, fade_away)
+        else:
+            popup.destroy()
+
+    root.after(1000, fade_away)  # Start fading after 1 second
+
+# GUI Setup
 root = tk.Tk()
 root.title("Turkish🇹🇷 Char Converter")
 
@@ -44,6 +67,9 @@ output_box = tk.Text(frame, height=10, width=50)
 output_box.grid(row=3, column=0, columnspan=2, pady=5)
 
 convert_btn = ttk.Button(frame, text="Convert", command=on_convert)
-convert_btn.grid(row=4, column=0, columnspan=2, pady=10)
+convert_btn.grid(row=4, column=0, pady=10)
+
+copy_btn = ttk.Button(frame, text="Copy Text", command=copy_to_clipboard)
+copy_btn.grid(row=4, column=1, pady=10)
 
 root.mainloop()
