@@ -18,6 +18,11 @@ Python 3.x
 
 ```
 git clone https://github.com/Cantooine/turkishcharconverter
+```
+```
+cd turkishcharconverter/
+```
+```
 python3 turkish_char_converter.py
 ```
 Once the GUI appears:
