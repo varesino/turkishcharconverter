@@ -29,14 +29,15 @@ def on_convert():
     output_box.insert(tk.END, converted_text)
 
 def copy_to_clipboard():
+    text_to_copy = output_box.get(1.0, tk.END).strip()
     root.clipboard_clear()
-    root.clipboard_append(output_box.get(1.0, tk.END))
-    root.update()  # This line ensures the clipboard contents are updated
-    show_fading_popup("Text copied successfully!")
+    root.clipboard_append(text_to_copy)
+    root.update()
+    show_fading_popup("Text copied!")
 
 def show_fading_popup(message):
     popup = tk.Toplevel(root)
-    popup.wm_overrideredirect(True)  # Removes window decorations
+    popup.wm_overrideredirect(True)
     popup.geometry("+%d+%d" % (root.winfo_x() + 50, root.winfo_y() + 50))
     label = ttk.Label(popup, text=message, padding=(10, 5))
     label.pack()
@@ -49,7 +50,7 @@ def show_fading_popup(message):
         else:
             popup.destroy()
 
-    root.after(1000, fade_away)  # Start fading after 1 second
+    root.after(1000, fade_away)
 
 # GUI Setup
 root = tk.Tk()
