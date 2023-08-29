@@ -3,14 +3,23 @@ from tkinter import ttk
 
 def convert_to_html_codes(input_text):
     mapping = {
-        'Ç': '&#199;', 'ç': '&#231;', 'Ğ': '&#286;', 'ğ': '&#287;',
-        'İ': '&#304;', 'ı': '&#305;', 'Ö': '&#214;', 'ö': '&#246;',
-        'Ş': '&#350;', 'ş': '&#351;', 'Ü': '&#220;', 'ü': '&#252;',
+        'Ç': '&#199;',
+        'ç': '&#231;',
+        'Ğ': '&#286;',
+        'ğ': '&#287;',
+        'İ': '&#304;',
+        'ı': '&#305;',
+        'Ö': '&#214;',
+        'ö': '&#246;',
+        'Ş': '&#350;',
+        'ş': '&#351;',
+        'Ü': '&#220;',
+        'ü': '&#252;',
     }
-
+    
     for key, value in mapping.items():
         input_text = input_text.replace(key, value)
-
+    
     return input_text
 
 def on_key_release(event=None):
@@ -38,40 +47,48 @@ def show_fading_popup(message):
     popup.geometry("+%d+%d" % (x, y))
     label = ttk.Label(popup, text=message, padding=(10, 5))
     label.pack()
-    root.after(1000, lambda: fade_away(popup))
+    
+    def fade_away():
+        alpha = popup.attributes("-alpha")
+        if alpha > 0:
+            popup.attributes("-alpha", alpha - 0.1)
+            root.after(100, fade_away)
+        else:
+            popup.destroy()
 
-def fade_away(popup):
-    alpha = popup.attributes("-alpha")
-    if alpha > 0:
-        popup.attributes("-alpha", alpha - 0.1)
-        root.after(100, lambda: fade_away(popup))
-    else:
-        popup.destroy()
-
-def center_window(w, h):
-    screen_width = root.winfo_screenwidth()
-    screen_height = root.winfo_screenheight()
-    x = (screen_width // 2) - (w // 2)
-    y = (screen_height // 2) - (h // 2)
-    root.geometry(f"{w}x{h}+{x}+{y}")
+    root.after(1000, fade_away)
 
 # GUI Setup
 root = tk.Tk()
 root.title("Turkish🇹🇷 Char Converter")
 
-center_window(800, 500)
+initial_width = 800
+initial_height = 500
+
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+x = (screen_width // 2) - (initial_width // 2)
+y = (screen_height // 2) - (initial_height // 2)
+
+root.geometry(f"{initial_width}x{initial_height}+{x}+{y}")
 
 frame = ttk.Frame(root, padding="10")
-frame.grid(sticky=(tk.W, tk.E, tk.N, tk.S))
+frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+
+root.grid_columnconfigure(0, weight=1)
+root.grid_rowconfigure(0, weight=1)
+frame.grid_columnconfigure(1, weight=1)
+frame.grid_rowconfigure(1, weight=1)
+frame.grid_rowconfigure(3, weight=1)
 
 ttk.Label(frame, text="Input Text:").grid(row=0, column=0, sticky=tk.W, pady=5)
 input_box = tk.Text(frame, height=10, width=50)
-input_box.grid(row=1, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E))
+input_box.grid(row=1, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
 input_box.bind("<KeyRelease>", on_key_release)
 
 ttk.Label(frame, text="Converted Text:").grid(row=2, column=0, sticky=tk.W, pady=5)
 output_box = tk.Text(frame, height=10, width=50)
-output_box.grid(row=3, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E))
+output_box.grid(row=3, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
 
 copy_btn = ttk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard)
 copy_btn.grid(row=4, column=1, pady=10, sticky=tk.E)
