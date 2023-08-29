@@ -65,19 +65,26 @@ root.title("Turkish🇹🇷 Char Converter")
 frame = ttk.Frame(root, padding="10")
 frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
+# Set column and row weights
+root.grid_columnconfigure(0, weight=1)
+root.grid_rowconfigure(0, weight=1)
+frame.grid_columnconfigure(1, weight=1)
+frame.grid_rowconfigure(1, weight=1)
+frame.grid_rowconfigure(3, weight=1)
+
 ttk.Label(frame, text="Input Text:").grid(row=0, column=0, sticky=tk.W, pady=5)
 input_box = tk.Text(frame, height=10, width=50)
-input_box.grid(row=1, column=0, columnspan=2, pady=5)
+input_box.grid(row=1, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
 input_box.bind("<KeyRelease>", on_key_release)
 
 ttk.Label(frame, text="Converted Text:").grid(row=2, column=0, sticky=tk.W, pady=5)
 output_box = tk.Text(frame, height=10, width=50)
-output_box.grid(row=3, column=0, columnspan=2, pady=5)
+output_box.grid(row=3, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
 
 copy_btn = ttk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard)
-copy_btn.grid(row=4, column=1, pady=10)
+copy_btn.grid(row=4, column=1, pady=10, sticky=tk.E)
 
-clear_btn = ttk.Button(frame, text="Clear Input", command=clear_input)
-clear_btn.grid(row=4, column=0, pady=10)
+clear_btn = ttk.Button(frame, text="Clear", command=clear_input)
+clear_btn.grid(row=4, column=0, pady=10, sticky=tk.W)
 
 root.mainloop()
