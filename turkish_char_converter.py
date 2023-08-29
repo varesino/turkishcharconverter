@@ -35,6 +35,10 @@ def copy_to_clipboard():
     root.update()
     show_fading_popup("Text copied!")
 
+def clear_input():
+    input_box.delete(1.0, tk.END)
+    output_box.delete(1.0, tk.END)
+
 def show_fading_popup(message):
     popup = tk.Toplevel(root)
     popup.wm_overrideredirect(True)
@@ -71,6 +75,9 @@ output_box = tk.Text(frame, height=10, width=50)
 output_box.grid(row=3, column=0, columnspan=2, pady=5)
 
 copy_btn = ttk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard)
-copy_btn.grid(row=4, column=0, columnspan=2, pady=10)
+copy_btn.grid(row=4, column=1, pady=10)
+
+clear_btn = ttk.Button(frame, text="Clear Input", command=clear_input)
+clear_btn.grid(row=4, column=0, pady=10)
 
 root.mainloop()
