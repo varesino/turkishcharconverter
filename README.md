@@ -8,6 +8,7 @@ A simple and efficient Python application with a GUI to convert specific Turkish
 - Real-time conversion from Turkish characters to HTML character codes.
 - Full support for Turkish characters: Ç, ç, Ğ, ğ, İ, ı, Ö, ö, Ş, ş, Ü, ü.
 - "Copy to Clipboard" feature to instantly copy the converted text with a single click.
+- "Clear" feature to instantly clear both boxes with a single click.
 
 ## 📋 Prerequisites
 
@@ -29,6 +30,7 @@ Once the GUI appears:
 
 1. Enter or paste your text containing Turkish characters into the "Input Text" box. As you type, the corresponding HTML codes will automatically appear in the "Converted Text" box.
 2. Use the "Copy to Clipboard" button to quickly copy the converted text for use elsewhere.
+3. Use the "Clear" button to clear boxes for convert new text.
 
 ## 🔍 How It Works
 
