@@ -16,7 +16,7 @@ def convert_to_html_codes(input_text):
         'Ü': '&#220;',
         'ü': '&#252;',
     }
-    
+
     for key, value in mapping.items():
         input_text = input_text.replace(key, value)
     
@@ -95,5 +95,8 @@ copy_btn.grid(row=4, column=1, pady=10, sticky=tk.E)
 
 clear_btn = ttk.Button(frame, text="Clear", command=clear_input)
 clear_btn.grid(row=4, column=0, pady=10, sticky=tk.W)
+
+root.lift()          # Bring the window to the front
+root.focus_force()   # Force focus so it doesn't go behind other windows
 
 root.mainloop()
