@@ -30,7 +30,7 @@ Once the GUI appears:
 
 1. Enter or paste your text containing Turkish characters into the "Input Text" box. As you type, the corresponding HTML codes will automatically appear in the "Converted Text" box.
 2. Use the "Copy to Clipboard" button to quickly copy the converted text for use elsewhere.
-3. Use the "Clear" button to clear boxes for convert new text.
+3. Use the 'Clear' button to clear the boxes and convert new text.
 
 ## 🔍 How It Works
 
